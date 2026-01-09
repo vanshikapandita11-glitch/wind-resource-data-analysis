@@ -1,0 +1,26 @@
+CREATE TABLE wind_measurements (
+    measurement_datetime DATETIME PRIMARY KEY,
+    wind_100m_n_avg DECIMAL(6,3),
+    wind_100m_n_std DECIMAL(6,3),
+    wind_100m_s_avg DECIMAL(6,3),
+    wind_100m_s_std DECIMAL(6,3),
+    wind_80m_avg DECIMAL(6,3),
+    wind_80m_std DECIMAL(6,3),
+    wind_50m_avg DECIMAL(6,3),
+    wind_50m_std DECIMAL(6,3),
+    wind_20m_avg DECIMAL(6,3),
+    wind_20m_std DECIMAL(6,3),
+    pressure_mbar DECIMAL(6,1),
+    wind_direction_98m DECIMAL(5,1),
+    wind_direction_78m DECIMAL(5,1),
+    wind_direction_48m DECIMAL(5,1),
+    temperature_5m DECIMAL(4,2),
+    humidity_5m DECIMAL(5,2),
+    data_source VARCHAR(50),
+    data_quality ENUM('GOOD', 'SUSPECT', 'BAD', 'MISSING'),
+    quality_notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_date (measurement_datetime),
+    INDEX idx_quality (data_quality)
+);
+
